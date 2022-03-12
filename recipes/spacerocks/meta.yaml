@@ -1,0 +1,49 @@
+{% set name = "spacerocks" %}
+{% set version = "2.1.0" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  url: https://github.com/mjuric/spacerocks/archive/v{{ version }}.tar.gz
+  sha256: c86d23f11c45d6c2596c1c771e509c515e6ca8497570d4867d16e3fb843ed644
+
+build:
+  script: {{ PYTHON }} -m pip install . -vv
+  number: 0
+
+requirements:
+  build:
+    - {{ compiler('c') }}
+  host:
+    - pip
+    - python
+  run:
+    - asdf
+    - astropy
+    - astroquery
+    - healpy
+    - numpy
+    - pandas
+    - python
+    - rebound
+    - spiceypy
+    - libopenblas >=0.3.17
+
+test:
+  imports:
+    - spacerocks
+  commands:
+    - pip check
+  requires:
+    - pip
+
+about:
+  home: https://github.com/kjnapier/spacerocks
+  license: GPL-3.0
+  license_file: LICENSE.md
+
+extra:
+  recipe-maintainers:
+    - mjuric
