@@ -1,0 +1,46 @@
+{% set name = "lsdb" %}
+{% set version = "0.0.5" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  url: https://github.com/mjuric/lsdb/archive/v{{ version }}.tar.gz
+  sha256: ea4847be33531fcc602ab22b973bab29f4d186244b3005185727d4eed0ad9623
+
+build:
+  noarch: python
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+  number: 0
+
+requirements:
+  host:
+    - python
+    - setuptools >=62
+    - setuptools-scm >=6.2
+    - pip
+  run:
+    - python
+    - dask-core
+    - hipscat
+    - pyarrow
+    - deprecated
+    - ipykernel
+    - scipy
+
+test:
+  imports:
+    - lsdb
+  commands:
+    - pip check
+  requires:
+    - pip
+
+about:
+  license: BSD-3-Clause
+  license_file: LICENSE
+
+extra:
+  recipe-maintainers:
+    - mjuric
