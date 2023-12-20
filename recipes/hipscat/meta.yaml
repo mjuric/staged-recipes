@@ -1,0 +1,49 @@
+{% set name = "hipscat" %}
+{% set version = "0.2.1" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  url: https://github.com/mjuric/hipscat/archive/v{{ version }}.tar.gz
+  sha256: cf7ac42d7a06b7a68eb5512cd4de3e9af0a4b2e619aafecc4d69681c7fa3ae78
+# curl -L https://github.com/mjuric/hipscat/archive/v0.2.1.tar.gz | openssl sha256
+
+build:
+  noarch: python
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+  number: 0
+
+requirements:
+  host:
+    - python >=3.9
+    - setuptools >=62
+    - setuptools-scm >=6.2
+    - pip
+  run:
+    - python >=3.9
+    - astropy
+    - fsspec <=2023.9.2
+    - healpy
+    - numba
+    - pandas
+    - pyarrow >=10.0.0
+    - typing-extensions >=4.3.0
+    - spherical-geometry
+
+test:
+  imports:
+    - hipscat
+  commands:
+    - pip check
+  requires:
+    - pip
+
+about:
+  license: BSD-3-Clause
+  license_file: LICENSE
+
+extra:
+  recipe-maintainers:
+    - mjuric
