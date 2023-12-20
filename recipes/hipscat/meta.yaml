@@ -41,6 +41,8 @@ test:
     - pip
 
 about:
+  home: https://github.com/astronomy-commons/hipscat
+  summary: 'A HiPSCat astronomical catalog format reader library'
   license: BSD-3-Clause
   license_file: LICENSE
 
