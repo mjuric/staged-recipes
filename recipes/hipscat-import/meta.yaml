@@ -1,0 +1,51 @@
+{% set name = "hipscat-import" %}
+{% set version = "0.2.1" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  url: https://github.com/mjuric/hipscat-import/archive/v{{ version }}.tar.gz
+  sha256: 176aba5820a64622b09d9031e569816ebdaa7160390f81b108d0ab34fc4c36ed
+
+build:
+  noarch: python
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+  number: 0
+
+requirements:
+  host:
+    - python
+    - setuptools >=62
+    - setuptools-scm >=6.2
+    - pip
+  run:
+    - python
+    - dask-core
+    - deprecated
+    - healpy
+    - hipscat >=0.2.0
+    - ipykernel
+    - pandas <2.1.0
+    - pyarrow
+    - pyyaml
+    - tqdm
+    - numpy <1.25
+    - fsspec <=2023.9.2
+
+test:
+  imports:
+    - hipscat_import
+  commands:
+    - pip check
+  requires:
+    - pip
+
+about:
+  license: BSD-3-Clause
+  license_file: LICENSE
+
+extra:
+  recipe-maintainers:
+    - mjuric
