@@ -6,9 +6,9 @@ package:
   version: {{ version }}
 
 source:
-  url: https://github.com/mjuric/hipscat/archive/v{{ version }}.tar.gz
-  sha256: cf7ac42d7a06b7a68eb5512cd4de3e9af0a4b2e619aafecc4d69681c7fa3ae78
-# curl -L https://github.com/mjuric/hipscat/archive/v0.2.1.tar.gz | openssl sha256
+  url: https://github.com/astronomy-commons/hipscat/archive/v{{ version }}.tar.gz
+  sha256: ada1618a1a3a3be02341b48d74b36c67bb73524546a3cb10873e5ee5d14458a2
+# curl -L https://github.com/astronomy-commons/hipscat/archive/v0.2.1.tar.gz | openssl sha256
 
 build:
   noarch: python
