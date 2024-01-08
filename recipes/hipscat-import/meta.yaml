@@ -6,8 +6,8 @@ package:
   version: {{ version }}
 
 source:
-  url: https://github.com/mjuric/hipscat-import/archive/v{{ version }}.tar.gz
-  sha256: 176aba5820a64622b09d9031e569816ebdaa7160390f81b108d0ab34fc4c36ed
+  url: https://github.com/astronomy-commons/hipscat-import/archive/v{{ version }}.tar.gz
+  sha256: 27c26e70b953a84ffc448b3335714eef885a3eb90c059f0aca7be267f6c18da8
 
 build:
   noarch: python
